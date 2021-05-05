@@ -1,0 +1,19 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Teste {
+	public static void main(String[] args) {
+		String data1 = "25/10/2020";
+		String data2 = "20/10/2020";
+		
+		//SimpleDateFormat conversor = new SimpleDateFormat("dd/MM/yyyy");
+		
+		//Date data1Convertida = conversor.parse(data1);
+		
+
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MM yyyy");
+		LocalDate localDate = LocalDate.parse(data1, format);
+		
+		System.out.println(localDate);
+	}
+}

@@ -1,0 +1,68 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Anuncio {
+	private String[] dados;
+	private String nome;
+	private String cliente;
+	private String dataInicio;
+	private String dataTermino;
+	private double investimentoPorDia;
+	private SimpleDateFormat converter = new SimpleDateFormat("dd/mm/yyyy");
+	
+//	public Anuncio(String nome, String cliente, Date dataInicio, Date dataTermino, double investimentoPorDia) {
+//		this.nome = nome;
+//		this.cliente = cliente;
+//		this.dataInicio = dataInicio;
+//		this.dataTermino = dataTermino;
+//		this.investimentoPorDia = investimentoPorDia;
+//	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = dados[0];
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = dados[1];
+	}
+
+	public String getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(String dados2) {
+		this.dataInicio = converter.format(dados[2]);
+	}
+
+	public String getDataTermino() {
+		return dataTermino;
+	}
+
+	public void setDataTermino(String dados2) {
+		this.dataTermino = converter.format(dados[3]);
+	}
+
+	public double getInvestimentoPorDia() {
+		return investimentoPorDia;
+	}
+
+	public void setInvestimentoPorDia(String dados2) {
+		this.investimentoPorDia = Double.parseDouble(dados[4]);
+	}
+
+	public String[] getDados() {
+		return dados;
+	}
+
+	public void setDados(String[] dados) {
+		this.dados = dados;
+	}
+}

@@ -1,0 +1,33 @@
+public class Calculadora {
+	public () {
+	
+		
+		double taxaCliques = (double) 12/100;
+		double taxaCompartilhamento = (double) 3/20;
+		
+
+		int visualizacaoNaoCompartilhado = (int) Math.round(30*valorInvestido);
+		
+		int cliquesGeradosSemCompartilhamento = (int) Math.round(taxaCliques*visualizacaoNaoCompartilhado);
+		
+		int pessoasQueCompartilharamPrimario = (int) Math.round(cliquesGeradosSemCompartilhamento*taxaCompartilhamento);
+		
+		int visualizacaoPosCompartilhamento = pessoasQueCompartilharamPrimario*40;
+		
+		int cliquesGerados = 0;
+		int pessoasQueCompartilharamSecundario = 0;
+		for (int i=0; i<3; i++) {
+			for (int j=0; j<pessoasQueCompartilharamPrimario; j++) {
+				visualizacaoPosCompartilhamento = visualizacaoPosCompartilhamento + 40;
+				cliquesGerados = (int) Math.round(visualizacaoPosCompartilhamento*taxaCliques);
+				pessoasQueCompartilharamSecundario = (int) Math.round(cliquesGerados*taxaCompartilhamento);
+			}
+		}
+		
+		int visualizacaoProjecao = visualizacaoNaoCompartilhado+visualizacaoPosCompartilhamento;
+		
+		System.out.println("Projeção aproximada de pessoas que visualizarão esse mesmo anúncio: " + visualizacaoProjecao);
+		System.out.println("Número de cliques foram: " + (cliquesGeradosSemCompartilhamento+cliquesGerados));
+		System.out.println("Número de pessoas que compartilharam: " + (pessoasQueCompartilharamPrimario+pessoasQueCompartilharamSecundario));
+	}
+}

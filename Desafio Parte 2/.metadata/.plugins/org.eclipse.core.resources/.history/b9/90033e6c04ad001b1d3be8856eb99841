@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Digite os dados do anúncio: ");
+		
+		String[] dados = new String[6];
+		String dado = "";
+		Anuncio anuncio1 = new Anuncio();
+		
+		int i = 0;
+		while(i<5) {
+			dado = entrada.next();
+			dados[i] = dado;
+			i++;
+		}
+		
+		anuncio1.setDados(dados);
+		anuncio1.setNome(dados[0]);
+		anuncio1.setCliente(dados[1]);
+		anuncio1.setDataInicio(dados[2]);
+		anuncio1.setDataTermino(dados[3]);
+		anuncio1.setInvestimentoPorDia(dados[4]);
+		
+		
+		System.out.println("Dados do anúncio são: " + anuncio1.getNome() + anuncio1.getInvestimentoPorDia());
+		
+		entrada.close();
+	}
+
+}

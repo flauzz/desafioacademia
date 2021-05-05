@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Digite os dados do anúncio: ");
+		
+		String[] dados = new String[5];
+		String dado;
+		Anuncio anuncio1 = new Anuncio();
+		
+		int i = 0;
+		while(i<5) {
+			dado = entrada.next();
+			dados[i] = dado;
+			i++;
+		}
+		
+		anuncio1.setDados(dados);
+		anuncio1.setNome(dados[0]);
+		anuncio1.setCliente(dados[1]);
+		anuncio1.setDataInicio(dados[2]);
+		anuncio1.setDataTermino(dados[3]);
+		anuncio1.setInvestimentoPorDia(dados[4]);
+		
+		//===========================================================================
+		
+		
+//		String data1 = "20/10/2020";
+//		String data2 = "25/10/2020";
+//		
+//		DateTimeFormatter formato1 = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+//		LocalDate dataConvertida1 = LocalDate.parse(data1, formato1); 
+//		System.out.println(dataConvertida1);
+//		
+//		DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+//		LocalDate dataConvertida2 = LocalDate.parse(data2, formato2); 
+//		System.out.println(dataConvertida2);
+//		
+//		int diferenca = dataConvertida1.compareTo(dataConvertida2);
+//		System.out.println(diferenca);
+		
+		//SimpleDateFormat conversor = new SimpleDateFormat("dd/MM/yyyy");
+		
+		//Date data1Convertida = conversor.parse(data1);
+		
+
+//		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MM yyyy");
+//		LocalDate localDate = LocalDate.parse(data1, format);
+//		
+//		System.out.println(localDate);
+//		
+//		Calendar c = Calendar.getInstance();
+//        c.add(Calendar.DATE, -31);
+//        System.out.println(c.getTime());
+		
+		
+        //=============================================================================
+        
+		System.out.println("Dados do anúncio são: " + anuncio1.getNome() + anuncio1.getInvestimentoPorDia());
+		System.out.printf("O valor total investido foi: R$ %.2f", anuncio1.calculadora());
+		
+		entrada.close();
+	}
+
+}

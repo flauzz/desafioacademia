@@ -1,0 +1,82 @@
+package controle.desafios;
+
+import java.util.Scanner;
+
+public class Calculadora {
+
+	public static void main(String[] args) {
+		
+		/*
+		 * Parte 0 - Coletar o valor investido pela agência Divulga Tudo através do Scanner,
+		 * substituir a vírgula por ponto (caso digitada) para evitar erro,
+		 * guardar e converter o valor investido de string para double
+		 * e guardar as taxas de cliques e compartilhamento:
+		 */
+		
+		Scanner entrada = new Scanner(System.in);
+		System.out.print("Digite o valor investido em reais: ");
+		
+		String pontoVirgula = entrada.next().replace(",", ".");
+		double valorInvestido = Double.parseDouble(pontoVirgula);
+		
+		double taxaCliques = (double) 12/100; //12% das visualizações geram cliques
+		double taxaCompartilhamento = (double) 3/20; //15% dos cliques geram compartilhamento
+		
+		/*
+		 * Parte 1 - A partir do valor investido, cálculo do número de visualizações antes de qualquer compartilhamento,
+		 * cálculo do número de cliques gerados antes de qualquer compartilhamento,
+		 * cálculo do número de pessoas que compartilharam o anúncio original (compartilhamento primário)
+		 * e a primeira camada de visualizações após o compartilhamento desse número de pessoas:
+		 */
+
+		int visualizacaoNaoCompartilhado = (int) Math.round(30*valorInvestido);
+		//^^arredondando e deixando o valor inteiro (evitar ocorrênca de visualizações quebradas)^^
+		
+		int cliquesGeradosSemCompartilhamento = (int) Math.round(taxaCliques*visualizacaoNaoCompartilhado);
+		//^^arredondando e deixando o valor inteiro (evitar ocorrênca de cliques quebrados)^^
+		
+		int pessoasQueCompartilharamPrimario = (int) Math.round(cliquesGeradosSemCompartilhamento*taxaCompartilhamento);
+		//^^arredondando e deixando o valor inteiro (evitar ocorrênca de compartilhamentos quebrados)^^
+		
+		int visualizacaoPosCompartilhamento = pessoasQueCompartilharamPrimario*40;
+		
+		/*
+		 * Parte 2 - Após a primeira camada de visualizações, cálculo das camadas seguintes(compartilhamento secundário):
+		 * Considerando que cada pessoa da primeira camada gere mais três compartilhamentos
+		 * (um total de 4 compartilhamentos sequenciais para cada pessoa da primeira camada)
+		 * empregou-se o primeiro "for" para esses três compartilhamentos (i<3)
+		 * e o segundo "for" para o número de pessoas da primeira camada (j<pessoasQueCompartilharamPrimario).
+		 * Com isso, calculou-se o número de visualizações após os primeiros compartilhamentos (compartilhamento primário),
+		 * o número de cliques em decorrência dos compartilhamentos secundários ()
+		 * e a segunda camada de compartilhamentos (compartilhamento secundário):
+		 */
+		
+		//int cliquesGerados = 0;
+		//int pessoasQueCompartilharamSecundario = 0;
+		for (int i=0; i<3; i++) {
+			for (int j=0; j<pessoasQueCompartilharamPrimario; j++) {
+				visualizacaoPosCompartilhamento = visualizacaoPosCompartilhamento + 40;
+				//cliquesGerados = (int) Math.round(visualizacaoPosCompartilhamento*taxaCliques);
+				//pessoasQueCompartilharamSecundario = (int) Math.round(cliquesGerados*taxaCompartilhamento);
+			}
+		}
+		
+		/*
+		 * Parte 3 - Cálculo da projeção do número de visualizações do anúncio:
+		 */
+		
+		int visualizacaoProjecao = visualizacaoNaoCompartilhado+visualizacaoPosCompartilhamento;
+		
+		/*
+		 * Parte 4 - Informação da projeção aproximada do número de visualizações que o anúncio terá (anúncio original + compartilhamentos)
+		 * de acordo com o valor investido inserido no início do texto:
+		 */
+		
+		System.out.println("Projeção aproximada de pessoas que visualizarão esse mesmo anúncio: " + visualizacaoProjecao);
+		entrada.close();
+		
+		//meio para confirmar os cálculos:
+		//System.out.println("Número de cliques foram: " + (cliquesGeradosSemCompartilhamento+cliquesGerados));
+		//System.out.println("Número de pessoas que compartilharam: " + (pessoasQueCompartilharamPrimario+pessoasQueCompartilharamSecundario));
+	}
+}

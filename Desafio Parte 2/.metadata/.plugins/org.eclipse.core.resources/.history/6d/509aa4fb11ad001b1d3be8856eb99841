@@ -1,0 +1,81 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+
+public class Teste {
+	public static void main(String[] args) {
+//		String data1 = "25/10/2020";
+//		String data2 = "20/10/2020";
+//		
+		
+		//SimpleDateFormat conversor = new SimpleDateFormat("dd/MM/yyyy");
+		
+		//Date data1Convertida = conversor.parse(data1);
+		
+
+//		DateTimeFormatter format = DateTimeFormatter.ofPattern("d MMMM yyyy");
+//		LocalDate localDate = LocalDate.parse(data1, format);
+//		
+//		System.out.println(localDate);
+//		System.out.println(data2);
+		
+//		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+//
+//        String DateToStr = format.format(data1);
+//        System.out.println(DateToStr);
+//        
+//        try {
+//            Date strToDate = format.parse(DateToStr);
+//            System.out.println(strToDate);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+		
+//		Date data3 = new Date();
+//		data3.;
+		
+//		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+//		
+//		Calendar calendar = Calendar.getInstance(); 
+//		calendar.setTime(date);
+//
+//		System.out.println(formato.format(calendar.getTime()));
+		
+//		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+//		
+//		Date dataFormatada = formato.parse(data1);
+		
+//		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+//		LocalDate data = LocalDate.parse(data1, formato); 
+//		System.out.println(data);
+		
+//		Date entrada = new Date();
+//		
+//		String temp = datasaida.getText();
+//
+//		SimpleDateFormat format = new SimpleDateFormat(“dd/MM/yyyy”);
+//		Date dtsaida = new java.sql.Date(format.parse(temp).getTime());
+//		SimpleDateFormat sdf = new SimpleDateFormat(“dd/MM/yyyy”);
+//
+//		Calendar c = Calendar.getInstance();
+//		c.setTime(dtsaida.getTime() - entrada.getTime());
+//		totaldiarias.setText( String.valueOf(c.get(Calendar.DAY_OF_MONTH)) );
+		
+		String data1 = "20/10/2020";
+		String data2 = "25/10/2020";
+		
+		DateTimeFormatter formato1 = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+		LocalDate dataConvertida1 = LocalDate.parse(data1, formato1); 
+		System.out.println(dataConvertida1);
+		
+		DateTimeFormatter formato2 = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+		LocalDate dataConvertida2 = LocalDate.parse(data2, formato2); 
+		System.out.println(dataConvertida2);
+		
+		int diferenca = dataConvertida1.compareTo(dataConvertida2);
+		System.out.println(diferenca);
+	}
+}

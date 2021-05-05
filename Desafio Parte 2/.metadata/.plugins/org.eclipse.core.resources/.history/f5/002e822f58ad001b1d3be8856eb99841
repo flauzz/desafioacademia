@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		String[] dados = new String[5];
+		String dado = "";
+		
+		System.out.println("Digite o número de anúncios que irá cadastrar: ");
+		int numDeAnuncios = Integer.parseInt(entrada.next());
+		
+		Anuncio anuncio[] = new Anuncio[numDeAnuncios];
+		
+		String[] informacao = {"o nome", "o cliente", "a data de início", "a data de término", "o valor investido por dia"};
+		
+		for (int j = 0; j<numDeAnuncios; j++) {
+			int i = 0;
+			while(i<5) {
+				System.out.println("Sobre o Anúncio " + j +", digite " + informacao[i] + ":");
+				dado = entrada.next();
+				dados[i] = dado;
+				i++;
+			}
+			
+			anuncio[j] = new Anuncio();
+			anuncio[j].setNome(dados);
+			anuncio[j].setCliente(dados);
+			anuncio[j].setDataInicio(dados);
+			anuncio[j].setDataTermino(dados);
+			anuncio[j].setInvestimentoPorDia(dados);
+		}
+		
+		System.out.println("Digite o número correspondente ao relatório que deseja visualizar:\n(Lembrando que foram cadastrados " +
+				numDeAnuncios + " anúncio(s), sendo a partir do Anúncio 0).");
+		int relatorio = Integer.parseInt(entrada.next());
+		
+		System.out.println("====================== Relatório do Anúncio " + relatorio + ": =====================\n");
+		System.out.println("Valor total investido: R$" + anuncio[relatorio].calculadora());
+		
+		int opcao = 10;
+		while (opcao != 0) {
+			System.out.println("=====================================================================================\n");
+			System.out.println("Se deseja filtrar os relatórios por cliente (digite 1), por intervalo de tempo (digite 2). "
+					+ "Para encerrar digite 0 (zero):");
+			opcao = Integer.parseInt(entrada.next());
+			
+			if(opcao == 0) {
+				System.out.println("============= Fim do programa ===============");
+			} else if (opcao == 1) {
+				System.out.println("Digite o nome do cliente: ");
+				String nomeCliente = entrada.next();
+				
+				for (int j=0; j<numDeAnuncios; j++) {
+					if (nomeCliente.equals(anuncio[j].getCliente())) {
+						System.out.println("====================== Relatório(s) filtrado(s) do cliente " + nomeCliente + ": =====================\n");
+						System.out.println("Valor total investido: R$" + anuncio[j].calculadora());
+					}
+				}
+				
+			} else if (opcao == 2) {
+				System.out.println("Digite uma data: ");
+				String data = entrada.next();
+				
+				for (int j=0; j<numDeAnuncios; j++) {
+					if (data.equals(anuncio[j].getDataInicio()) || data.equals(anuncio[j].getDataTermino())) {
+						System.out.println("====================== Relatório(s) filtrado(s) pela data " + data + ": =====================\n");
+						System.out.println("Valor total investido: R$" + anuncio[j].calculadora());
+					} else {
+						System.out.println("Data inserida não encontrada no Anúncio " + j);
+					}
+				}
+			}
+		}
+		
+		entrada.close();
+	}
+}

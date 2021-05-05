@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		String[] dados = new String[5];
+		String dado;
+		
+		System.out.println("Digite o número de anúncios que irá cadastrar: ");
+		int numDeAnuncios = Integer.parseInt(entrada.next());
+		
+		Anuncio anuncio[] = new Anuncio[numDeAnuncios];
+		
+		String[] informacao = {"o nome", "o cliente", "a data de início", "a data de término", "o valor investido por dia"};
+		int i = 0;
+		for (int j = 0; j<numDeAnuncios; j++) {
+			while(i<5) {
+				System.out.println("Sobre o anúncio, digite " + informacao[i] + ":");
+				dado = entrada.next();
+				dados[i] = dado;
+				i++;
+				
+				anuncio[j].setDados(dados);
+				anuncio[j].setNome(dados[0]);
+				anuncio[j].setCliente(dados[1]);
+				anuncio[j].setDataInicio(dados[2]);
+				anuncio[j].setDataTermino(dados[3]);
+				anuncio[j].setInvestimentoPorDia(dados[4]);
+			}
+		}
+		
+		System.out.printf("Digite o número correspondente ao relatório que deseja visualizar:\n"
+				+ " Lembrando que foram cadastrados %i", numDeAnuncios + " anúncio(s), sendo o primeiro o 0(zero)");
+		int relatorio = Integer.parseInt(entrada.next());
+		
+		System.out.println("============ Relatório do Anúncio " + relatorio + ": =====================\n" + anuncio[relatorio].calculadora());
+		
+		entrada.close();
+	}
+}
