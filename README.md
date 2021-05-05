@@ -16,6 +16,7 @@
 - Executar novamente o comando dir ou ls para verificar se arquivos .class foram criados
 - Para finalizar, com os arquivos compilados (.class e .java), executar o programa com o código 'java NomeDoProgramaSemExtensão'
 - No caso deste desafio proposto os códigos de compilação e execução são, respectivamente: 'javac Anuncio.java', 'javac Programa.java' e 'java Programa'
+- Resumo da localização do código fonte: 'Desafio Parte 2'/'Divulga Tudo'/src/
 
 #### Instruções de Utilização
 
